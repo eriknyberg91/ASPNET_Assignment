@@ -7,7 +7,8 @@ namespace WebApp.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return LocalRedirect("/projects"); // For redirecting to projects while working on layout
+            //return View();
         }
     }
 }

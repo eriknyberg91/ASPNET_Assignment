@@ -1,13 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebApp.Controllers
+namespace WebApp.Controllers;
+[Route("projects")]
+public class ProjectsController : Controller
 {
-    public class ProjectsController : Controller
+    [Route("")]
+    public IActionResult Projects()
     {
-        [Route("projects")]
-        public IActionResult Projects()
-        {
-            return View();
-        }
+        return View();
+    }
+
+    [Route("add")]
+    public IActionResult AddProjects()
+    {
+        return View();
     }
 }
