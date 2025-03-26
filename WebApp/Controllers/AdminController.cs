@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers;
 [Route("admin")]
@@ -9,4 +10,13 @@ public class AdminController : Controller
     {
         return View();
     }
+
+    [Route("clients")]
+    public IActionResult Clients()
+    {
+        return View();
+    }
+
+
+    
 }
