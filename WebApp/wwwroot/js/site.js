@@ -74,7 +74,14 @@
                         modal.style.display = 'none'
                     }
 
-                    window.location.reload();
+                    //window.location.reload();
+                        const data = await res.json();
+                        if (data.redirectUrl) {
+                            window.location.href = data.redirectUrl;
+                        } else {
+                            window.location.reload();
+                        }
+                    
                 }
 
                 else if (res.status === 400) {
