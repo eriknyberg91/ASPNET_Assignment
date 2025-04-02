@@ -1,4 +1,6 @@
 using Data.Database;
+using Data.Interfaces;
+using Data.Repositories;
 using Data.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,9 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 
 builder.Services.AddScoped<UserService>();
 
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<ProjectService>();
+
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
     {
         x.Password.RequiredLength = 8;
@@ -19,12 +24,22 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.LoginPath = "/auth/signin";
+    x.LogoutPath = "/auth/signout";
+    x.AccessDeniedPath = "/auth/signin";
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    x.SlidingExpiration = true;
+});
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 app.UseHsts();
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
 app.MapControllerRoute(

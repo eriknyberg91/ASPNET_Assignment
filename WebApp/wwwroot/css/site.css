@@ -494,6 +494,14 @@ input[type="checkbox"] {
         width: 550px;
     }
 
+    #addProjectModal .modal-content {
+        width: 550px;
+    }
+
+    #editProjectModal .modal-content {
+        width: 550px;
+    }
+
     .hide {
         display: none;
     }

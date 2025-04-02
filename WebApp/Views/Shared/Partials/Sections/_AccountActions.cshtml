@@ -1,0 +1,12 @@
+﻿<div class="btn-group">
+    @if (signInManager.IsSignedIn(User))
+    {
+        <a asp-action="SignOut" asp-controller="Auth" class="btn btn-signout">Sign out</a>
+    }
+    else
+    {
+        <a asp-action="SignUp" asp-controller="Auth" class="btn btn-signup">Sign up</a>
+        <a asp-action="SignIn" asp-controller="Auth" class="btn btn-signin"> Sign in</a>
+    }
+
+</div>

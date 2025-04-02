@@ -20,7 +20,9 @@
         <div class="side">
 			@await Html.PartialAsync("Partials/Components/_NavLinks")
         </div>
-        <div class="top">top</div>
+        <div class="top">
+            @await Html.PartialAsync("Partials/Sections/_AccountActions")
+        </div>
         <div class="main">
 			@RenderBody()
         </div>

@@ -1,7 +1,9 @@
 ﻿using Business.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers;
+[Authorize]
 [Route("admin")]
 public class AdminController : Controller
 {
@@ -18,5 +20,13 @@ public class AdminController : Controller
     }
 
 
-    
+    //[AllowAnonymous] för en specifik endpoint.
+    [Route("projects")]
+    public IActionResult Projects()
+    {
+        return View();
+    }
+
+
+
 }

@@ -58,8 +58,14 @@ namespace WebApp.Controllers
                 }
             }
 
-            ViewData["ErrorMessage"] = "Invalid login attempt.";
+            ViewBag.ErrorMessage = "Invalid login attempt.";
             return View(form);
+        }
+
+        public new async Task <IActionResult> SignOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("SignIn", "Auth");
         }
     }
 }

@@ -6,6 +6,9 @@
 
 <div id="signup">
 	<form id="signin-form" asp-action="SignIn" asp-controller="Auth" method="post" novalidate>
+
+		<input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+		
 		<div>
 			<label asp-for="Email"></label>
 			<div>
@@ -22,9 +25,7 @@
 		</div>
 
 		<div class="form-group">
-			<div class="notification-error">
-				@ViewData["ErrorMessage"]
-			</div>
+			@ViewBag.ErrorMessage
 		</div>
 
 

@@ -10,10 +10,9 @@ using WebApp.Models;
 
 namespace Data.Services;
 
-public class UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+public class UserService(UserManager<AppUser> userManager)
 {
     private readonly UserManager<AppUser> _userManager = userManager;
-    private readonly SignInManager<AppUser> _signInManager = signInManager;
 
     public async Task<bool> CreateAsync(UserSignUpForm form)
     {
