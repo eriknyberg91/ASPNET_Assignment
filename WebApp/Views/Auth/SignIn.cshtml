@@ -1,35 +1,35 @@
 ﻿@model UserSignInForm
 
 @{
-	ViewData["Title"] = "Sign Up";
+    ViewData["Title"] = "Sign In";
+    Layout = "_CleanLayout";
 }
 
-<div id="signup">
-	<form id="signin-form" asp-action="SignIn" asp-controller="Auth" method="post" novalidate>
+<div class="login-container">
+    <form asp-action="SignIn" asp-controller="Auth" method="post" novalidate class="login-form">
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
 
-		<input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
-		
-		<div>
-			<label asp-for="Email"></label>
-			<div>
-				<input asp-for="Email" />
-				<span asp-validation-for="Email"></span>
-			</div>
-		</div>
-		<div>
-			<label asp-for="Password"></label>
-			<div>
-				<input asp-for="Password" />
-				<span asp-validation-for="Password"></span>
-			</div>
-		</div>
+        <h2>Login</h2>
 
-		<div class="form-group">
-			@ViewBag.ErrorMessage
-		</div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" placeholder="Your email address" />
+        <span asp-validation-for="Email"></span>
 
+        <label asp-for="Password"></label>
+        <input asp-for="Password" placeholder="Enter your password" />
+        <span asp-validation-for="Password"></span>
 
-		<button type="submit" class="btn btn-submit">Sign In</button>
-	</form>
+        <div class="remember-me">
+            <input type="checkbox" id="remember" name="RememberMe" checked />
+            <label for="remember">Remember Me</label>
+        </div>
+
+        <div class="form-group error-msg">@ViewBag.ErrorMessage</div>
+
+        <button data-modal="true" type="submit">Log In</button>
+
+        <p class="signup-text">Don't have an account? <a href="/auth/signup">Sign Up</a></p>
+    </form>
 </div>
+
 

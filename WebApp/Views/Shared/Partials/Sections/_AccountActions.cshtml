@@ -2,6 +2,7 @@
     @if (signInManager.IsSignedIn(User))
     {
         <a asp-action="SignOut" asp-controller="Auth" class="btn btn-signout">Sign out</a>
+        <p>Welcome, @User.Identity.Name</p>
     }
     else
     {

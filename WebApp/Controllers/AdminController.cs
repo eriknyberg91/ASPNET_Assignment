@@ -1,12 +1,17 @@
 ﻿using Business.Models;
+using Data.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers;
 [Authorize]
 [Route("admin")]
-public class AdminController : Controller
+public class AdminController(ProjectService projectService) : Controller
 {
+
+    private readonly ProjectService _projectService = projectService;
+
     [Route("members")]
     public IActionResult Members()
     {
@@ -22,9 +27,14 @@ public class AdminController : Controller
 
     //[AllowAnonymous] för en specifik endpoint.
     [Route("projects")]
-    public IActionResult Projects()
+    public async Task<IActionResult> Projects()
     {
-        return View();
+        var projects = await _projectService.GetAllProjectsAsync();
+        var viewModel = new ProjectsViewModel
+        {
+            Projects = projects
+        };
+        return View(viewModel);
     }
 
 

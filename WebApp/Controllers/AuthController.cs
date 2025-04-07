@@ -41,6 +41,10 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Projects", "Admin");
+            }
             return View();
         }
 

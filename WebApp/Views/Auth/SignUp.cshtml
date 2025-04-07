@@ -1,61 +1,58 @@
 ﻿@model UserSignUpForm
 
 @{
-	ViewData["Title"] = "Sign Up";
+    ViewData["Title"] = "Sign Up";
+    Layout = "_CleanLayout";
 }
 
-<div id="signup">
-	<form id="signup-form" asp-action="SignUp" asp-controller="Auth" method="post" novalidate>
-		<div>
-			<label asp-for="FirstName"></label>
-			<div>
-				<input asp-for="FirstName" />
-				<span asp-validation-for="FirstName"></span>
-			</div>
-		</div>
-		<div>
-			<label asp-for="LastName"></label>
-			<div>
-				<input asp-for="LastName" />
-				<span asp-validation-for="LastName"></span>
-			</div>
-		</div>
-		<div>
-			<label asp-for="Email"></label>
-			<div>
-				<input asp-for="Email" />
-				<span asp-validation-for="Email"></span>
-			</div>
-		</div>
-		<div>
-			<label asp-for="Phone"></label>
-			<div>
-				<input asp-for="Phone" />
-				<span asp-validation-for="Phone"></span>
-			</div>
-		</div>
-		<div>
-			<label asp-for="Password"></label>
-			<div>
-				<input asp-for="Password" />
-				<span asp-validation-for="Password"></span>
-			</div>
-		</div>
-		<div>
-			<label asp-for="ConfirmPassword"></label>
-			<div>
-				<input asp-for="ConfirmPassword" />
-				<span asp-validation-for="ConfirmPassword"></span>
-			</div>
-		</div>
-		<div>
-			<label asp-for="TermsAndConditions"></label>
-			<div>
-				<input asp-for="TermsAndConditions" />
-				<span asp-validation-for="TermsAndConditions"></span>
-			</div>
-		</div>
-		
-		<button type="submit" class="btn btn-submit">Sign Up</button>
-	</form>
+<div class="login-container">
+    <form asp-action="SignUp" asp-controller="Auth" method="post" novalidate class="login-form">
+        <h2>Create Account</h2>
+
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" placeholder="First name" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" placeholder="Last name" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" placeholder="Your email address" />
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" placeholder="Your phone number" />
+            <span asp-validation-for="Phone"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" placeholder="Enter your password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" placeholder="Confirm your password" />
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+
+        <div class="form-group remember-me">
+            <input asp-for="TermsAndConditions" type="checkbox" />
+            <label asp-for="TermsAndConditions">I accept <a href="#">Terms and Conditions</a></label>
+            <span asp-validation-for="TermsAndConditions"></span>
+        </div>
+
+        <button data-modal="true" type="submit">Create Account</button>
+        <p class="signup-text">Already have an account? <a href="/auth/signin">Login</a></p>
+    </form>
 </div>
+

@@ -1,13 +1,9 @@
-﻿@{
-	ViewData["Title"] = "Projects";
-}
-
-<partial name="Partials/Sections/_AddProjectForm" />
-
+﻿@model ProjectsViewModel
+<partial name="Partials/Sections/_AddProjectForm" model="Model.AddProjectForm" />
 <section id="projects-section">
-	<header>
-		<h2>Projects</h2>
-		<button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-add btn-blue">Add project</button>
-	</header>
-
+    <header>
+        <h2>Projects</h2>
+        <button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-add btn-blue">Add project</button>
+    </header>
+    @await Html.PartialAsync("Partials/Sections/_ProjectList", Model.Projects)
 </section>
