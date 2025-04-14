@@ -1,0 +1,22 @@
+﻿<div id="activeUserModal" class="modal">
+	<div class="modal-content">
+
+
+			<div class="active-user-modal-container">
+				<div class="active-user-image-text">
+					<img src="~/images/AvatarOne.svg" alt="" />
+					<p>@User.Identity.Name</p>
+					<button type="button" class="btn-close" data-close="true"></button>
+				</div>
+
+				<div class="active-user-sign-out">
+						<i class="fa-solid fa-right-from-bracket"></i>
+						<a asp-action="SignOut" asp-controller="Auth">
+							<p>Sign Out</p>
+						</a>
+
+				</div>				
+			</div>
+
+	</div>
+</div>

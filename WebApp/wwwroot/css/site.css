@@ -148,9 +148,8 @@ html, body {
         grid-area: top;
         border-bottom: 1px solid var(--border-color);
         padding: 1rem 2rem;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 5rem;
+        display: flex;
+        justify-content: end;
     }
 
     .portal > .main {
@@ -409,6 +408,18 @@ input[type="checkbox"] {
     padding: 0.5rem 1rem;
 }
 
+.active-user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-user-image {
+    width: 48px;
+    height: 48px;
+    margin-left: 1.5rem;
+}
+
 
 
 
@@ -505,9 +516,108 @@ input[type="checkbox"] {
         width: 550px;
     }
 
-    .hide {
-        display: none;
+    #activeUserModal .modal-content {
+        width: 550px;
     }
+
+#activeUserModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 1300px;
+    right: 0;
+    bottom: 600px;
+    width: auto;
+    height: auto;
+}
+
+#activeUserModal .modal-content {
+    padding: 0;
+    width: 250px;
+}
+
+
+
+.active-user-modal-container {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.active-user-image-text {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    position: relative;
+    background-color: var(--background-color);
+}
+
+    .active-user-image-text img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        margin-right: 12px;
+        object-fit: cover;
+    }
+
+    .active-user-image-text p {
+        margin: 0;
+        font-weight: 500;
+        color: #333;
+        font-size: 14px;
+    }
+
+.btn-close {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    color: #666;
+    font-size: 18px;
+}
+
+.active-user-sign-out {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-top: 1px solid #e6e6e6;
+    cursor: pointer;
+}
+
+    .active-user-sign-out:hover {
+        background-color: #f5f5f5;
+    }
+
+    .active-user-sign-out i {
+        margin-right: 12px;
+        color: #666;
+        font-size: 14px;
+    }
+
+    .active-user-sign-out p {
+        margin: 0;
+        color: #333;
+        font-size: 14px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+.hide {
+    display: none;
+}
 
 
 
@@ -653,3 +763,94 @@ input[type="checkbox"] {
 }
 
 /* views/pages */
+
+/* Styling for projects container and project item was done with the help of Claude AI */
+.project-list-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 16px;
+    padding: 16px;
+    background-color: #f5f5f7;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.project-list-item {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+        "image title menu"
+        "image company company"
+        "description description description";
+    column-gap: 12px;
+    row-gap: 4px;
+    min-height: 140px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    .project-list-item img {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        grid-area: image;
+        align-self: start;
+    }
+
+    .project-list-item h5 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        grid-area: title;
+        align-self: center;
+    }
+
+    .project-list-item i {
+        color: #999;
+        cursor: pointer;
+        grid-area: menu;
+        justify-self: end;
+        align-self: center;
+    }
+
+    .project-list-item p:nth-of-type(1) {
+        font-size: 13px;
+        color: #777;
+        margin: 0;
+        grid-area: company;
+    }
+
+    .project-list-item p:nth-of-type(2) {
+        font-size: 14px;
+        color: #555;
+        margin: 16px 0 0 0;
+        grid-area: description;
+        line-height: 1.4;
+    }
+
+@media (max-width: 992px) {
+    .project-list-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-list-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px;
+    }
+}

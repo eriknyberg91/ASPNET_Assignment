@@ -1,0 +1,28 @@
+﻿@model EditProjectForm
+
+<div id="editProjectModal" class="modal">
+	<div class="modal-content">
+
+		<div class="modal-header">
+			<h3>Edit Client</h3>
+			<button type="button" class="btn-close" data-close="true"></button>
+		</div>
+
+		<form novalidate method="post" asp-action="EditProject" asp-controller="Projects">
+
+			<input asp-for="Id" readonly type="hidden" />
+
+			<div class="form-group">
+				<label asp-for="ProjectName"></label>
+				<div class="field-group">
+					<input asp-for="ProjectName" />
+					<span asp-validation-for="ProjectName"></span>
+				</div>
+			</div>
+			
+
+			<button type="submit" class="btn btn-submit btn-blue">Create</button>
+		</form>
+
+	</div>
+</div>

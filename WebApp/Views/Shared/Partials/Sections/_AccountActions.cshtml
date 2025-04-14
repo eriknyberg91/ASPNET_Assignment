@@ -1,8 +1,12 @@
-﻿<div class="btn-group">
+﻿<partial name="Partials/Sections/_ActiveUserForm"/>
+
+<div class="btn-group">
     @if (signInManager.IsSignedIn(User))
     {
-        <a asp-action="SignOut" asp-controller="Auth" class="btn btn-signout">Sign out</a>
-        <p>Welcome, @User.Identity.Name</p>
+        <div class="active-user-container">
+        <i class="fa-solid fa-gear"></i>
+            <img class="active-user-image" src="~/images/AvatarOne.svg" alt="" data-modal="true" data-target="#activeUserModal" />
+        </div>
     }
     else
     {
