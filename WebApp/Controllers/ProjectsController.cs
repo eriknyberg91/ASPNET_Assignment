@@ -37,7 +37,7 @@ public class ProjectsController(ProjectService projectService) : Controller
     }
 
     [HttpPost("edit")]
-    public IActionResult EditProject(AddProjectForm form)
+    public async Task<IActionResult> EditProject(EditProjectForm form)
     {
         if (!ModelState.IsValid)
         {
@@ -51,10 +51,16 @@ public class ProjectsController(ProjectService projectService) : Controller
             return BadRequest(new { success = false, errors });
         }
 
-        //TODO: Send data to clientService/database
-        //var result = await _clientService.UpdateClientAsync(form);
-        return Ok();
+        var formCheck = form;
 
+        var projectToUpdate = await _projectService.GetProjectAsync(x => x.Id == form.Id);
+        if (projectToUpdate == null)
+        {
+            return NotFound(new { success = false, message = "Project not found" });
+        }
+
+        var result = await _projectService.UpdateProjectAsync(projectToUpdate.Id, form);
+        return Ok(new { success = true });
     }
 
     [HttpGet]

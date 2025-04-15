@@ -24,8 +24,6 @@ public class AdminController(ProjectService projectService) : Controller
         return View();
     }
 
-
-    //[AllowAnonymous] för en specifik endpoint.
     [Route("projects")]
     public async Task<IActionResult> Projects()
     {

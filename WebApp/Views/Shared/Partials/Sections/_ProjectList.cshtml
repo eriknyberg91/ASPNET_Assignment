@@ -4,10 +4,10 @@
 <div class="project-list-container">
 	@foreach (var project in Model)
 	{
-		<div class="project-list-item"> 
+		<div class="project-list-item">
 			<img src="~/images/project-list-image.svg" />
 			<h5>@Html.DisplayFor(m => project.ProjectName)</h5>
-			<i class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			<i class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal" data-project-id="@project.Id" data-project-name="@project.ProjectName"></i>
 			<p>Company / Client</p>
 			<p>Description of project</p>
 		</div>

@@ -46,6 +46,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Auth}/{action=SignIn}/{id?}")
     .WithStaticAssets();
+app.MapControllers();
 
 
 app.Run();

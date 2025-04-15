@@ -6,8 +6,19 @@
         button.addEventListener('click', () => {
             const modalTarget = button.getAttribute('data-target')
             const modal = document.querySelector(modalTarget)
-
+            //Claude AI was used to help populate the modal with data.
             if (modal) {
+                if (modalTarget === '#editProjectModal') {
+                    const projectId = button.getAttribute('data-project-id')
+                    const projectName = button.getAttribute('data-project-name')
+
+                    const idInput = modal.querySelector('input[name="Id"]')
+                    const nameInput = modal.querySelector('input[name="ProjectName"]')
+
+                    if (idInput) idInput.value = projectId
+                    if (nameInput) nameInput.value = projectName
+                }
+
                 modal.style.display = 'flex'
             }
         })
@@ -169,3 +180,15 @@ async function processImage(file, imagePreview, previewer, previewSize = 150) {
         console.error('Failed on image processing.', error)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

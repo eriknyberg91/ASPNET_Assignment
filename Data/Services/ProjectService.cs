@@ -1,6 +1,7 @@
 ﻿
 
 using System.Linq.Expressions;
+using Business.Models;
 using Data.Interfaces;
 using Data.Models;
 
@@ -27,6 +28,22 @@ public class ProjectService (IProjectRepository projectRepository)
     {
         var entity = await _projectRepository.GetAsync(expression);
         return entity ?? null!;
+    }
+
+    public async Task<bool> UpdateProjectAsync(int id, EditProjectForm form)
+    {
+        var project = await _projectRepository.GetAsync(x => x.Id == id);
+        if (project == null)
+        {
+            return false; 
+        }
+
+        if (!string.IsNullOrEmpty(form.ProjectName)) project.ProjectName = form.ProjectName;
+        
+
+        await _projectRepository.UpdateAsync(x => x.Id == id, project);
+
+        return true;
     }
 }
     
