@@ -96,6 +96,10 @@
     const forms = document.querySelectorAll('form')
     forms.forEach(form => {
         form.addEventListener('submit', async (e) => {
+            if (form.method.toLowerCase() !== 'post') {
+                return;
+            }
+
             e.preventDefault();
 
             clearErrorMessages(form)

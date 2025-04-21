@@ -53,7 +53,7 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(form.Email, form.Password, false, false);
+                var result = await _signInManager.PasswordSignInAsync(form.Email, form.Password, true, false);
                 if (result.Succeeded)
                 {
                     Console.WriteLine("Login successful");
