@@ -1,15 +1,23 @@
 ﻿@model IEnumerable<Data.Models.ProjectEntity>
-
-
 <div class="project-list-container">
 	@foreach (var project in Model)
 	{
 		<div class="project-list-item">
 			<img src="~/images/project-list-image.svg" />
 			<h5>@Html.DisplayFor(m => project.ProjectName)</h5>
-			<i class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal" data-project-id="@project.Id" data-project-name="@project.ProjectName"></i>
-			<p>Company / Client</p>
-			<p>Description of project</p>
+			<i class="fa-regular fa-ellipsis"
+			   data-modal="true"
+			   data-target="#editProjectModal"
+			   data-project-id="@project.Id"
+			   data-project-name="@project.ProjectName"
+			   data-client-name="@project.ClientName"
+			   data-description="@project.Description"
+			   data-is-completed="@project.IsCompleted"
+			   data-start-date="@project.StartDate.ToString("yyyy-MM-dd")"
+			   data-end-date="@(project.EndDate.HasValue ? project.EndDate.Value.ToString("yyyy-MM-dd") : "")"
+			   data-budget="@(project.Budget.HasValue ? project.Budget.Value.ToString() : "")"></i>
+			<p>@project.ClientName</p>
+			<p>@project.Description</p>
 		</div>
 	}
 </div>

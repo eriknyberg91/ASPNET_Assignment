@@ -35,14 +35,19 @@ public class ProjectService (IProjectRepository projectRepository)
         var project = await _projectRepository.GetAsync(x => x.Id == id);
         if (project == null)
         {
-            return false; 
+            return false;
         }
 
         if (!string.IsNullOrEmpty(form.ProjectName)) project.ProjectName = form.ProjectName;
-        
+        if (!string.IsNullOrEmpty(form.ClientName)) project.ClientName = form.ClientName;
+        if (!string.IsNullOrEmpty(form.Description)) project.Description = form.Description;
+
+        project.IsCompleted = form.IsCompleted;
+        project.StartDate = form.StartDate;
+        project.EndDate = form.EndDate;
+        project.Budget = form.Budget;
 
         await _projectRepository.UpdateAsync(x => x.Id == id, project);
-
         return true;
     }
 }

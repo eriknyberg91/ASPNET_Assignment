@@ -8,3 +8,4 @@ public class ProjectRepository(DataContext context) : BaseRepository<ProjectEnti
 {
     private readonly DataContext _context = context;
 }
+

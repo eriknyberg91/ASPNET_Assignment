@@ -12,18 +12,6 @@ public class AdminController(ProjectService projectService) : Controller
 
     private readonly ProjectService _projectService = projectService;
 
-    [Route("members")]
-    public IActionResult Members()
-    {
-        return View();
-    }
-
-    [Route("clients")]
-    public IActionResult Clients()
-    {
-        return View();
-    }
-
     [Route("projects")]
     public async Task<IActionResult> Projects()
     {

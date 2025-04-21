@@ -6,17 +6,46 @@
         button.addEventListener('click', () => {
             const modalTarget = button.getAttribute('data-target')
             const modal = document.querySelector(modalTarget)
-            //Claude AI was used to help populate the modal with data.
+            // Claude AI was used to help populate the edit project modal
             if (modal) {
                 if (modalTarget === '#editProjectModal') {
                     const projectId = button.getAttribute('data-project-id')
                     const projectName = button.getAttribute('data-project-name')
+                    const clientName = button.getAttribute('data-client-name')
+                    const description = button.getAttribute('data-description')
+                    const isCompleted = button.getAttribute('data-is-completed')
+                    const startDate = button.getAttribute('data-start-date')
+                    const endDate = button.getAttribute('data-end-date')
+                    const budget = button.getAttribute('data-budget')
 
                     const idInput = modal.querySelector('input[name="Id"]')
                     const nameInput = modal.querySelector('input[name="ProjectName"]')
+                    const clientInput = modal.querySelector('input[name="ClientName"]')
+                    const descriptionInput = modal.querySelector('textarea[name="Description"]') || modal.querySelector('input[name="Description"]')
+                    const isCompletedInput = modal.querySelector('input[name="IsCompleted"]')
+                    const startDateInput = modal.querySelector('input[name="StartDate"]')
+                    const endDateInput = modal.querySelector('input[name="EndDate"]')
+                    const budgetInput = modal.querySelector('input[name="Budget"]') ||
+                        modal.querySelector('input[name="budget"]')
 
                     if (idInput) idInput.value = projectId
                     if (nameInput) nameInput.value = projectName
+                    if (clientInput) clientInput.value = clientName
+                    if (descriptionInput) descriptionInput.value = description
+
+                    if (isCompletedInput && isCompleted === 'True') {
+                        isCompletedInput.checked = true
+                    }
+
+                    if (startDateInput) startDateInput.value = startDate
+                    if (endDateInput && endDate) endDateInput.value = endDate
+                    if (budgetInput && budget && budget !== "null" && budget !== "") {
+                        const formattedBudget = budget.replace(',', '.');
+                        budgetInput.value = formattedBudget;
+                    } else {
+                        budgetInput.value = '';
+                    }
+
                 }
 
                 modal.style.display = 'flex'

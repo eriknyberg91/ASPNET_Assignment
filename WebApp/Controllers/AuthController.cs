@@ -58,7 +58,7 @@ namespace WebApp.Controllers
                 {
                     Console.WriteLine("Login successful");
                     //return RedirectToAction("members", "Admin");
-                    return Json( new { success = true, redirectUrl = Url.Action("Members", "Admin") });
+                    return Json( new { success = true, redirectUrl = Url.Action("Projects", "Admin") });
                 }
             }
 

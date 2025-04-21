@@ -27,7 +27,13 @@ public class ProjectsController(ProjectService projectService) : Controller
 
         ProjectEntity entity = new()
         {
-            ProjectName = form.ProjectName
+            ProjectName = form.ProjectName,
+            ClientName = form.ClientName,
+            Description = form.Description,
+            IsCompleted = form.IsCompleted,
+            StartDate = form.StartDate,
+            EndDate = form.EndDate,
+            Budget = form.Budget
         };
 
         await _projectService.CreateAsync(entity);
