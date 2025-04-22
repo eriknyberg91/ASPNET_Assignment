@@ -76,7 +76,6 @@
         })
     })
 
-    //TODO: Handle image-previewer
     document.querySelectorAll('.image-previewer').forEach(previewer => {
         const fileInput = previewer.querySelector('input[type="file"]')
         const imagePreview = previewer.querySelector('.image-preview')

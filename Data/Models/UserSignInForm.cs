@@ -10,8 +10,8 @@ namespace Data.Models;
 public class UserSignInForm
 {
     [Required(ErrorMessage = "Required")]
-    [DataType(DataType.EmailAddress)]
-    [Display(Name = "Email Adress", Prompt = "Enter your email")]
+    [EmailAddress(ErrorMessage = "Invalid email address")]
+    [Display(Name = "Email Address", Prompt = "Enter your email")]
     public string Email { get; set; } = null!;
 
     [Required(ErrorMessage = "Required")]

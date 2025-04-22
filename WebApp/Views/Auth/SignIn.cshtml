@@ -11,13 +11,17 @@
 
         <h2>Login</h2>
 
-        <label asp-for="Email"></label>
-        <input asp-for="Email" placeholder="Your email address" />
-        <span asp-validation-for="Email"></span>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" placeholder="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
 
-        <label asp-for="Password"></label>
-        <input asp-for="Password" placeholder="Enter your password" />
-        <span asp-validation-for="Password"></span>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" placeholder="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
 
         <div class="remember-me">
             <input type="checkbox" id="remember" name="RememberMe" checked />
@@ -31,5 +35,6 @@
         <p class="signup-text">Don't have an account? <a href="/auth/signup">Sign Up</a></p>
     </form>
 </div>
+
 
 

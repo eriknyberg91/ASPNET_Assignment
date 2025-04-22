@@ -56,14 +56,23 @@ namespace WebApp.Controllers
                 var result = await _signInManager.PasswordSignInAsync(form.Email, form.Password, true, false);
                 if (result.Succeeded)
                 {
-                    Console.WriteLine("Login successful");
-                    //return RedirectToAction("members", "Admin");
                     return Json( new { success = true, redirectUrl = Url.Action("Projects", "Admin") });
                 }
             }
 
-            ViewBag.ErrorMessage = "Invalid login attempt.";
-            return View(form);
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState
+                    .Where(e => e.Value.Errors.Count > 0)
+                    .ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                return BadRequest(new { errors });
+            }
+
+            return BadRequest(new { errors = new { Email = new[] { "Invalid login attempt." } } });
         }
 
         public new async Task <IActionResult> SignOut()
