@@ -18,11 +18,25 @@ namespace WebApp.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public async Task<IActionResult> SignUp(UserSignUpForm form)
         {
             if (!ModelState.IsValid)
             {
-                return View(form);
+                var errors = ModelState
+                    .Where(e => e.Value.Errors.Count > 0)
+                    .ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                return BadRequest(new { errors });
             }
 
             var result = await _userService.CreateAsync(form);
@@ -32,10 +46,13 @@ namespace WebApp.Controllers
                 return Json(new { success = true, redirectUrl = Url.Action("SignIn", "Auth") });
             }
 
-            else
+            return BadRequest(new
             {
-                return View(form);
-            }
+                errors = new
+                {
+                    Email = new[] { "An account with this email may already exist, or the input was invalid." }
+                }
+            });
         }
 
         [HttpGet]
