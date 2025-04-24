@@ -35,14 +35,6 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="IsCompleted"></label>
-                <div class="field-group">
-                    <input asp-for="IsCompleted" type="checkbox" />
-                    <span asp-validation-for="IsCompleted"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="StartDate"></label>
                 <div class="field-group">
                     <input asp-for="StartDate" type="date" value="@Model.StartDate.ToString("yyyy-MM-dd")" />

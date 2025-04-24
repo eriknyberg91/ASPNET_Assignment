@@ -14,6 +14,19 @@ public class ProjectsController(ProjectService projectService) : Controller
     [Route("admin/projects")]
     public async Task<IActionResult> CreateProjectAsync(AddProjectForm form)
     {
+
+        if (!ModelState.IsValid)
+        {
+            var errors = ModelState
+                .Where(e => e.Value.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+
+            return BadRequest(new { errors });
+        }
+
         if (string.IsNullOrWhiteSpace(form.ProjectName))
         {
             return BadRequest("Project name cannot be empty.");
@@ -30,7 +43,7 @@ public class ProjectsController(ProjectService projectService) : Controller
             ProjectName = form.ProjectName,
             ClientName = form.ClientName,
             Description = form.Description,
-            IsCompleted = form.IsCompleted,
+            IsCompleted = false,
             StartDate = form.StartDate,
             EndDate = form.EndDate,
             Budget = form.Budget
