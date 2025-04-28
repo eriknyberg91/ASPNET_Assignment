@@ -11,13 +11,6 @@ namespace WebApp.Controllers
         private readonly UserService _userService = userService;
         private readonly SignInManager<AppUser> _signInManager =  signInManager;
 
-        public IActionResult Login()
-        {
-            //return LocalRedirect("/projects");
-            return View();
-        }
-
-
         [HttpGet]
         public IActionResult SignUp()
         {

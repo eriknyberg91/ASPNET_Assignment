@@ -15,9 +15,6 @@ public class AdminController(ProjectService projectService) : Controller
     [HttpGet("projects")]
     public async Task<IActionResult> Projects(bool showCompleted = false)
     {
-        // Log to confirm the value of 'showCompleted'
-        Console.WriteLine($"showCompleted = {showCompleted}");  // This will print in the server logs
-
         var projects = await _projectService.GetAllProjectsAsync();
         var filtered = projects.Where(p => p.IsCompleted == showCompleted);
 
