@@ -5,14 +5,18 @@
 <section id="projects-section">
     <header>
         <h2>Projects</h2>
+
+        <div class="projects-actions">
+
         <button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-add btn-blue">Add project</button>
 
         <form method="get" action="/admin/projects" style="display:inline;">
             <input type="hidden" name="showCompleted" value="@((!Model.ShowingCompleted).ToString().ToLower())" />
-            <button type="submit" class="btn btn-filter btn-gray">
+            <button type="submit" class="btn btn-add btn-info">
                 @(Model.ShowingCompleted ? "Show Active Projects" : "Show Completed Projects")
             </button>
         </form>
+        </div>
     </header>
     @await Html.PartialAsync("Partials/Sections/_ProjectList", Model.Projects)
 </section>
